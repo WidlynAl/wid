@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pour Toi 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: linear-gradient(135deg, #fff0f6, #f0f4ff);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: url('https://i.ibb.co/0qGZs5Z/flower.png') no-repeat center center;
+      background-size: contain;
+      animation: float 14s infinite linear, sway 3s infinite ease-in-out;
+      opacity: 0.3;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100vh) rotate(360deg); }
+    }
+
+    @keyframes sway {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(15px); }
+      100% { transform: translateX(0); }
+    }
+
+    .card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      z-index: 10;
+      max-width: 600px;
+      margin: 20px;
+      opacity: 0;
+      animation: fadeInCard 1.5s forwards;
+    }
+
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.7rem;
+      color: #d6336c;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .heart {
+      font-size: 2rem;
+      animation: pulse 1.5s infinite, fadeInHeart 2s forwards;
+      color: #ff4d88;
+      margin-bottom: 15px;
+      opacity: 0;
+    }
+
+    @keyframes fadeInHeart {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .logo {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #d6336c;
+      letter-spacing: 1px;
+    }
+
+    .whatsapp-btn {
+      margin-top: 25px;
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 10px #25D36680;
+      animation: glowBtn 2s infinite alternate;
+    }
+
+    @keyframes glowBtn {
+      from { box-shadow: 0 0 10px #25D36680; }
+      to { box-shadow: 0 0 25px #25D366cc; }
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1ebe5b;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 25px 15px; }
+      h1 { font-size: 2rem; }
+    }
+
+    /* Confetti styles */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 20;
+      animation: confetti-fall 2.5s linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% { transform: translateY(-20px) scale(1); }
+      80% { transform: translateY(90vh) scale(1.2); }
+      100% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Flowers -->
+  <div class="flower" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="flower" style="left: 30%; animation-delay: 3s;"></div>
+  <div class="flower" style="left: 50%; animation-delay: 5s;"></div>
+  <div class="flower" style="left: 70%; animation-delay: 2s;"></div>
+  <div class="flower" style="left: 90%; animation-delay: 4s;"></div>
+  <!-- Confetti Container -->
+  <div id="confetti-container"></div>
+
+  <!-- Message Card -->
+  <div class="card">
+    <div class="heart">❤️</div>
+    <h1>Je t'aime...</h1>
+    <p>
+      Je ne veux pas juste te dire "je t'aime".<br/>
+      Je veux te le prouver, te le vivre, te le montrer.<br/><br/>
+      Ton sourire illumine mes journées, ton âme touche la mienne.<br/>
+      Je rêve d’un avenir à deux, sincère, paisible, et plein d’amour.<br/><br/>
+      Si tu acceptes mon cœur, je t’aimerai avec tout ce que je suis.<br/><br/>
+      <strong>Je veux toi. Pas pour un moment. Pour une vie.</strong>
+    </p>
+
+    <div class="logo">ALTIDOR ❤️</div>
+
+    <a class="whatsapp-btn" href="https://wa.me/509XXXXXXXX" target="_blank">
+      Écris-moi sur WhatsApp
+    </a>
+  </div>
+
+  <script>
+    // Confetti animation
+    function randomColor() {
+      const colors = ['#ff4d88', '#ffd700', '#25D366', '#d6336c', '#f0f4ff', '#fff0f6'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+    function createConfettiPiece() {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.background = randomColor();
+      confetti.style.animationDelay = (Math.random() * 1.5) + 's';
+      document.getElementById('confetti-container').appendChild(confetti);
+      setTimeout(() => confetti.remove(), 3000);
+    }
+    function launchConfettiBurst() {
+      for (let i = 0; i < 30; i++) {
+        setTimeout(createConfettiPiece, i * 60);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(launchConfettiBurst, 1200);
+    });
+  </script>
+
+</body>
+</html>
+    
+</body>
+</html>
